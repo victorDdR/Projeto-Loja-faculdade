@@ -21,4 +21,9 @@ class ProductsImpl implements Products {
     public List<Product> findAll() {
         return productRepository.findByDeletedFalse();
     }
+
+    @Override
+    public void save(Product product) {
+        productRepository.save(product);
+    }
 }

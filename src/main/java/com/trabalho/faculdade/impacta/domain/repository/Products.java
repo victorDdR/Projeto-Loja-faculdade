@@ -7,4 +7,5 @@ import java.util.List;
 public interface Products {
 
     List<Product> findAll();
+    void save(Product product);
 }

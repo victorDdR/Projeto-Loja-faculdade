@@ -12,7 +12,7 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
-    @Column(nullable = false, name = "product_name")
+    @Column(nullable = false, name = "productName")
     private String name;
 
     @Column(nullable = false, name = "price")
@@ -31,11 +31,10 @@ public class Product {
     @Deprecated
     Product(){}
 
-    public Product(String name, BigDecimal price, int stock, boolean deleted, Category category) {
+    public Product(String name, BigDecimal price, int stock, Category category) {
         this.name = name;
         this.price = price;
         this.stock = stock;
-        this.deleted = deleted;
         this.category = category;
     }
 

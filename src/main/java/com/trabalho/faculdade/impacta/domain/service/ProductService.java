@@ -32,4 +32,7 @@ public class ProductService {
         return productDTOS;
     }
 
+    public void save(Product product) {
+        products.save(product);
+    }
 }

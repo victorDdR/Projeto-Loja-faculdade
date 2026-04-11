@@ -19,7 +19,7 @@ public class CategoryService {
         this.categories = categories;
     }
 
-    public List<CategoryDTO> getCategories() {
+    public List<CategoryDTO> findAll() {
         List<Category> categories = this.categories.findAll();
         List<CategoryDTO> categoryDTOS = new ArrayList<>();
 
@@ -28,5 +28,9 @@ public class CategoryService {
         );
 
         return categoryDTOS;
+    }
+
+    public Category findById(Long categoryId) {
+        return categories.findById(categoryId);
     }
 }

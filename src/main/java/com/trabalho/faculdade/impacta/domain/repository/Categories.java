@@ -7,4 +7,5 @@ import java.util.List;
 public interface Categories {
 
     List<Category> findAll();
+    Category findById(Long categoryId);
 }

@@ -25,7 +25,7 @@ public class CategoryController {
     @GetMapping(produces = "application/json; charset=utf-8")
     @ResponseStatus(code = HttpStatus.OK)
     public List<CategoryDTO> findAll() {
-        return categoryService.getCategories();
+        return categoryService.findAll();
     }
 
 }
