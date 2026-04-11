@@ -2,6 +2,8 @@ package com.trabalho.faculdade.impacta.domain.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categories")
 public class Category {
@@ -15,6 +17,9 @@ public class Category {
 
     @Column(nullable = false, name = "deleted")
     private boolean deleted;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private List<Product> products;
 
     @Deprecated
     public Category(){}
