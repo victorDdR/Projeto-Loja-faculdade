@@ -24,6 +24,22 @@ public class Product {
     @Column(nullable = false, name = "deleted")
     private boolean deleted;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    @Deprecated
+    Product(){}
+
+    public Product(String name, BigDecimal price, int stock, boolean deleted, Category category) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.deleted = deleted;
+        this.category = category;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -38,5 +54,9 @@ public class Product {
 
     public int getStock() {
         return stock;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }

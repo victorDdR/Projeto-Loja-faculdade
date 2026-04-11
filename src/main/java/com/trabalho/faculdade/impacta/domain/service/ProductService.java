@@ -2,6 +2,7 @@ package com.trabalho.faculdade.impacta.domain.service;
 
 import com.trabalho.faculdade.impacta.domain.model.Product;
 import com.trabalho.faculdade.impacta.domain.repository.Products;
+import com.trabalho.faculdade.impacta.presentation.dtos.CategoryDTO;
 import com.trabalho.faculdade.impacta.presentation.dtos.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ public class ProductService {
 
         List<Product> productList = products.findAll();
         productList.forEach(product ->
-            productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getStock()))
+            productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getStock(),
+                    new CategoryDTO(product.getCategory().getId(), product.getCategory().getName())))
         );
 
         return productDTOS;
