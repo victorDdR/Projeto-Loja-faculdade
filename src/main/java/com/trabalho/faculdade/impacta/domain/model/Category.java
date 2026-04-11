@@ -22,12 +22,11 @@ public class Category {
     private List<Product> products;
 
     @Deprecated
-    public Category(){}
+    Category(){}
 
-    public Category(Long id, String name, boolean deleted) {
+    public Category(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.deleted = deleted;
     }
 
     public Long getId() {

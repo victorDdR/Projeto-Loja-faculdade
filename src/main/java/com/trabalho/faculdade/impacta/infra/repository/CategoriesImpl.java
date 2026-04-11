@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class CategoriesImpl implements Categories {
@@ -21,5 +22,10 @@ public class CategoriesImpl implements Categories {
     @Override
     public List<Category> findAll() {
         return categoryRepository.findByDeletedFalse();
+    }
+
+    @Override
+    public Category findById(Long categoryId) {
+        return categoryRepository.findById(categoryId).orElse(null);
     }
 }
