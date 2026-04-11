@@ -23,9 +23,9 @@ public class ProductService {
         List<ProductDTO> productDTOS = new ArrayList<>();
 
         List<Product> productList = products.findAll();
-        productList.forEach(product -> {
-            productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getStock()));
-        });
+        productList.forEach(product ->
+            productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getStock()))
+        );
 
         return productDTOS;
     }

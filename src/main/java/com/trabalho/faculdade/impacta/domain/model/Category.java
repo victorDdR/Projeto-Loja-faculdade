@@ -16,9 +16,13 @@ public class Category {
     @Column(nullable = false, name = "deleted")
     private boolean deleted;
 
-    public Category(Long id, String name) {
+    @Deprecated
+    public Category(){}
+
+    public Category(Long id, String name, boolean deleted) {
         this.id = id;
         this.name = name;
+        this.deleted = deleted;
     }
 
     public Long getId() {
