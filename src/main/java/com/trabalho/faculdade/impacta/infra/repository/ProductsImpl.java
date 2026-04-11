@@ -1,13 +1,14 @@
-package com.trabalho.faculdade.impacta.domain.repository.products;
+package com.trabalho.faculdade.impacta.infra.repository;
 
 import com.trabalho.faculdade.impacta.domain.model.Product;
+import com.trabalho.faculdade.impacta.domain.repository.Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-class ProductsImpl implements Products{
+class ProductsImpl implements Products {
 
     private final ProductRepository productRepository;
 
@@ -18,6 +19,6 @@ class ProductsImpl implements Products{
 
     @Override
     public List<Product> findAll() {
-        return productRepository.findAll();
+        return productRepository.findByDeletedFalse();
     }
 }
