@@ -35,4 +35,10 @@ public class ProductService {
     public void save(Product product) {
         products.save(product);
     }
+
+    public void deleteById(Long productId) {
+        Product product = products.findById(productId);
+        product.delete();
+        products.save(product);
+    }
 }

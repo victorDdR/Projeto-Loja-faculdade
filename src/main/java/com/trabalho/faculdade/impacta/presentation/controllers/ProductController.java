@@ -33,5 +33,11 @@ public class ProductController {
     public void createProduct(@RequestBody ProductDTO productDTO) {
         createProductUseCase.createProduct(productDTO);
     }
-    
+
+    @DeleteMapping(path = "/{productId}/delete")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable Long productId) {
+        productService.deleteById(productId);
+    }
+
 }

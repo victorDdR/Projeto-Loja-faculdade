@@ -58,4 +58,14 @@ public class Product {
     public Category getCategory() {
         return category;
     }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void delete() {
+        this.deleted = true;
+        this.stock = 0;
+    }
+
 }
