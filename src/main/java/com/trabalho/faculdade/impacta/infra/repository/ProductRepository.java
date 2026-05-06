@@ -8,4 +8,5 @@ import java.util.List;
 interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByDeletedFalse();
+    List<Product> findByDeletedFalseAndQuantityGreaterThanZero();
 }

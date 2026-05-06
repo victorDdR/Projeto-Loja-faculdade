@@ -31,4 +31,9 @@ class ProductsImpl implements Products {
     public Product findById(Long productId) {
         return productRepository.findById(productId).orElse(null);
     }
+
+    @Override
+    public List<Product> findAllAvailable() {
+        return productRepository.findByDeletedFalseAndQuantityGreaterThanZero();
+    }
 }
