@@ -21,6 +21,10 @@ public class CreateProductUseCase {
     }
 
     public void createProduct(ProductDTO productDTO) {
+        if (productDTO.category().id() == null) {
+            categoryService.save(productDTO.category());
+        }
+
         Category category = categoryService.findById(productDTO.category().id());
         productService.save(new Product(productDTO.productName(), productDTO.price(), productDTO.stock(), category));
     }

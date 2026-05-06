@@ -28,4 +28,10 @@ public class CategoriesImpl implements Categories {
     public Category findById(Long categoryId) {
         return categoryRepository.findById(categoryId).orElse(null);
     }
+
+    @Override
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
+
 }
