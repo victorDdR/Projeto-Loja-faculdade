@@ -34,8 +34,8 @@ public class CategoryService {
         return categories.findById(categoryId);
     }
 
-    public void save(CategoryDTO categoryDTO) {
-        categories.save(new Category(categoryDTO.name()));
+    public Category save(Category category) {
+        return categories.save(category);
     }
 
 }
