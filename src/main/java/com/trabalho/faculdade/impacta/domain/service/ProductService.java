@@ -36,7 +36,7 @@ public class ProductService {
     }
 
     public List<ProductDTO> findAllAvailable() {
-        List<Product> availableProductsList = products.findAllAvailable();
+        List<Product> availableProductsList = products.findAvailable();
         return productListToDTOList(availableProductsList);
     }
 
@@ -44,7 +44,7 @@ public class ProductService {
         List<ProductDTO> productDTOS = new ArrayList<>();
 
         productList.forEach(product ->
-                productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getStock(),
+                productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getQuantity(),
                         new CategoryDTO(product.getCategory().getId(), product.getCategory().getName())))
         );
 

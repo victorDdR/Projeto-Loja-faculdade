@@ -33,7 +33,8 @@ class ProductsImpl implements Products {
     }
 
     @Override
-    public List<Product> findAllAvailable() {
-        return productRepository.findByDeletedFalseAndQuantityGreaterThanZero();
+    public List<Product> findAvailable() {
+        return productRepository.findAvailableProducts();
     }
+
 }

@@ -12,14 +12,14 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
-    @Column(nullable = false, name = "productName")
+    @Column(nullable = false, name = "product_name")
     private String name;
 
     @Column(nullable = false, name = "price")
     private BigDecimal price;
 
-    @Column(nullable = false, name = "stock")
-    private int stock;
+    @Column(nullable = false, name = "quantity")
+    private int quantity;
 
     @Column(nullable = false, name = "deleted")
     private boolean deleted;
@@ -31,10 +31,10 @@ public class Product {
     @Deprecated
     Product(){}
 
-    public Product(String name, BigDecimal price, int stock, Category category) {
+    public Product(String name, BigDecimal price, int quantity, Category category) {
         this.name = name;
         this.price = price;
-        this.stock = stock;
+        this.quantity = quantity;
         this.category = category;
     }
 
@@ -51,8 +51,8 @@ public class Product {
         return price;
     }
 
-    public int getStock() {
-        return stock;
+    public int getQuantity() {
+        return quantity;
     }
 
     public Category getCategory() {
@@ -65,7 +65,7 @@ public class Product {
 
     public void delete() {
         this.deleted = true;
-        this.stock = 0;
+        this.quantity = 0;
     }
 
 }
