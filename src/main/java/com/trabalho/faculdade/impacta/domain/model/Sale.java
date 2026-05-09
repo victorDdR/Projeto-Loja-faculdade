@@ -27,8 +27,9 @@ public class Sale {
     @Deprecated
     Sale(){}
 
-    public Sale(BigDecimal total) {
+    public Sale(BigDecimal total, LocalDateTime saleDate) {
         this.total = total;
+        this.saleDate = saleDate;
     }
 
     public Long getId() {
