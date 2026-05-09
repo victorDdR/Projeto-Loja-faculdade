@@ -27,4 +27,12 @@ public class Sale {
     @Deprecated
     Sale(){}
 
+    public Sale(BigDecimal total) {
+        this.total = total;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
 }

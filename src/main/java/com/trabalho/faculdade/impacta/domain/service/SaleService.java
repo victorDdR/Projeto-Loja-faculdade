@@ -15,8 +15,8 @@ public class SaleService {
         this.sales = sales;
     }
 
-    public void save(Sale sale) {
-        sales.save(sale);
+    public Sale save(Sale sale) {
+        return sales.save(sale);
     }
 
 }

@@ -17,10 +17,10 @@ public class SaleItem {
     private int quantity;
 
     @Column(nullable = false, name = "unit_price")
-    private BigDecimal unit_price;
+    private BigDecimal unitPrice;
 
     @Column(nullable = false, name = "total_price")
-    private BigDecimal total_price;
+    private BigDecimal totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "sale_id", nullable = false)
@@ -33,5 +33,12 @@ public class SaleItem {
     @Deprecated
     SaleItem(){}
 
+    public SaleItem(int quantity, BigDecimal unitPrice, BigDecimal totalPrice, Sale sale, Product product) {
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.totalPrice = totalPrice;
+        this.sale = sale;
+        this.product = product;
+    }
 
 }

@@ -40,6 +40,10 @@ public class ProductService {
         return productListToDTOList(availableProductsList);
     }
 
+    public Product findById(Long id) {
+        return products.findById(id);
+    }
+
     private List<ProductDTO> productListToDTOList(List<Product> productList) {
         List<ProductDTO> productDTOS = new ArrayList<>();
 
@@ -50,4 +54,5 @@ public class ProductService {
 
         return productDTOS;
     }
+
 }
