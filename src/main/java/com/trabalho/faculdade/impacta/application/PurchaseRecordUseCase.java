@@ -33,7 +33,14 @@ public class PurchaseRecordUseCase {
         List<SaleItemDTO> items = saleRequest.items();
         items.forEach(item -> {
             Product product = productService.findById(item.productDTO().id());
+            sellProduct(product, item.quantity());
             saleItemService.save(new SaleItem(item.quantity(), item.unitPrice(), item.totalPrice(), sale, product));
         });
     }
+
+    private void sellProduct(Product product, int quantity) {
+        product.sell(quantity);
+        productService.save(product);
+    }
+    
 }

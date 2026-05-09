@@ -68,4 +68,8 @@ public class Product {
         this.quantity = 0;
     }
 
+    public void sell(int quantitySold) {
+        this.quantity = quantity - quantitySold;
+    }
+
 }
