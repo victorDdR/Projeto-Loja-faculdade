@@ -21,15 +21,8 @@ public class ProductService {
     }
 
     public List<ProductDTO> findAll() {
-        List<ProductDTO> productDTOS = new ArrayList<>();
-
         List<Product> productList = products.findAll();
-        productList.forEach(product ->
-            productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getStock(),
-                    new CategoryDTO(product.getCategory().getId(), product.getCategory().getName())))
-        );
-
-        return productDTOS;
+        return productListToDTOList(productList);
     }
 
     public void save(Product product) {
@@ -41,4 +34,25 @@ public class ProductService {
         product.delete();
         products.save(product);
     }
+
+    public List<ProductDTO> findAllAvailable() {
+        List<Product> availableProductsList = products.findAvailable();
+        return productListToDTOList(availableProductsList);
+    }
+
+    public Product findById(Long id) {
+        return products.findById(id);
+    }
+
+    private List<ProductDTO> productListToDTOList(List<Product> productList) {
+        List<ProductDTO> productDTOS = new ArrayList<>();
+
+        productList.forEach(product ->
+                productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getQuantity(),
+                        new CategoryDTO(product.getCategory().getId(), product.getCategory().getName())))
+        );
+
+        return productDTOS;
+    }
+
 }

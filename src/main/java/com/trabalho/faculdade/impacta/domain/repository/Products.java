@@ -9,4 +9,5 @@ public interface Products {
     List<Product> findAll();
     void save(Product product);
     Product findById(Long productId);
+    List<Product> findAvailable();
 }

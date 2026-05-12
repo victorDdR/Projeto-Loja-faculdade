@@ -8,4 +8,5 @@ public interface Categories {
 
     List<Category> findAll();
     Category findById(Long categoryId);
+    Category save(Category category);
 }

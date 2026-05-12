@@ -40,4 +40,10 @@ public class ProductController {
         productService.deleteById(productId);
     }
 
+    @GetMapping(produces = "application/json; charset=utf-8", path = "/available")
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<ProductDTO> findAllAvailable() {
+        return productService.findAllAvailable();
+    }
+
 }

@@ -33,4 +33,9 @@ public class CategoryService {
     public Category findById(Long categoryId) {
         return categories.findById(categoryId);
     }
+
+    public Category save(Category category) {
+        return categories.save(category);
+    }
+
 }
