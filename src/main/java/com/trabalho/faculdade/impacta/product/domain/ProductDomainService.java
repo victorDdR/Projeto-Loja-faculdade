@@ -1,11 +1,10 @@
 package com.trabalho.faculdade.impacta.product.domain;
 
-import com.trabalho.faculdade.impacta.product.presentation.CategoryDTO;
-import com.trabalho.faculdade.impacta.product.presentation.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,13 +17,12 @@ public class ProductDomainService {
         this.products = products;
     }
 
-    public List<ProductDTO> findAll() {
-        List<Product> productList = products.findAll();
-        return productListToDTOList(productList);
+    public Page<Product> findAll(Pageable pageable) {
+        return products.findAll(pageable);
     }
 
-    public void save(Product product) {
-        products.save(product);
+    public Product save(Product product) {
+        return products.save(product);
     }
 
     public void deleteById(Long productId) {
@@ -33,24 +31,12 @@ public class ProductDomainService {
         products.save(product);
     }
 
-    public List<ProductDTO> findAllAvailable() {
-        List<Product> availableProductsList = products.findAvailable();
-        return productListToDTOList(availableProductsList);
+    public Page<Product> findAllAvailable(Pageable pageable) {
+        return products.findAllAvailable(pageable);
     }
 
     public Product findById(Long id) {
         return products.findById(id);
-    }
-
-    private List<ProductDTO> productListToDTOList(List<Product> productList) {
-        List<ProductDTO> productDTOS = new ArrayList<>();
-
-        productList.forEach(product ->
-                productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getQuantity(),
-                        new CategoryDTO(product.getCategory().getId(), product.getCategory().getName())))
-        );
-
-        return productDTOS;
     }
 
 }

@@ -1,9 +1,10 @@
 package com.trabalho.faculdade.impacta.product.infra;
 
-import com.trabalho.faculdade.impacta.infra.repository.ProductRepository;
 import com.trabalho.faculdade.impacta.product.domain.Product;
 import com.trabalho.faculdade.impacta.product.domain.Products;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,13 +20,13 @@ class ProductsImpl implements Products {
     }
 
     @Override
-    public List<Product> findAll() {
-        return productRepository.findByDeletedFalse();
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findByDeletedFalse(pageable);
     }
 
     @Override
-    public void save(Product product) {
-        productRepository.save(product);
+    public Product save(Product product) {
+        return productRepository.save(product);
     }
 
     @Override
@@ -34,8 +35,8 @@ class ProductsImpl implements Products {
     }
 
     @Override
-    public List<Product> findAvailable() {
-        return productRepository.findAvailableProducts();
+    public Page<Product> findAllAvailable(Pageable pageable) {
+        return productRepository.findAvailableProducts(pageable);
     }
 
 }
