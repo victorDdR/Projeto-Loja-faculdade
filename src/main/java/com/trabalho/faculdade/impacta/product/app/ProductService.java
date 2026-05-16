@@ -5,7 +5,7 @@ import com.trabalho.faculdade.impacta.product.domain.CategoryDomainService;
 import com.trabalho.faculdade.impacta.product.domain.Product;
 import com.trabalho.faculdade.impacta.product.domain.ProductDomainService;
 import com.trabalho.faculdade.impacta.product.presentation.dtos.CategoryDTO;
-import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductResponse;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductDTO;
 import com.trabalho.faculdade.impacta.util.PageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,21 +24,19 @@ public class ProductService {
         this.categoryDomainService = categoryDomainService;
     }
 
-    public PageResponse<ProductResponse> findAll(Pageable pageable) {
-        Page<ProductResponse> page = productDomainService.findAll(pageable).map(this::toDTO);
-        return new PageResponse<>(page.getContent(), page.getNumber(), page.getSize(), page.getTotalElements(),
-                page.getTotalPages(), page.isLast(), page.isFirst());
+    public PageResponse<ProductDTO> findAll(Pageable pageable) {
+        Page<ProductDTO> page = productDomainService.findAll(pageable).map(this::toDTO);
+        return new PageResponse<>(page);
     }
 
-    public PageResponse<ProductResponse> findAllAvailable(Pageable pageable) {
-        Page<ProductResponse> page = productDomainService.findAllAvailable(pageable).map(this::toDTO);
-        return new PageResponse<>(page.getContent(), page.getNumber(), page.getSize(), page.getTotalElements(),
-                page.getTotalPages(), page.isLast(), page.isFirst());
+    public PageResponse<ProductDTO> findAllAvailable(Pageable pageable) {
+        Page<ProductDTO> page = productDomainService.findAllAvailable(pageable).map(this::toDTO);
+        return new PageResponse<>(page);
     }
 
-    public void createProduct(ProductResponse productResponse) {
-        Category category = getCategory(productResponse.category());
-        productDomainService.save(new Product(productResponse.productName(), productResponse.price(), productResponse.stock(), category));
+    public void createProduct(ProductDTO productDTO) {
+        Category category = getCategory(productDTO.category());
+        productDomainService.save(new Product(productDTO.productName(), productDTO.price(), productDTO.stock(), category));
     }
 
     public void deleteById(Long productId) {
@@ -53,9 +51,9 @@ public class ProductService {
         return categoryDomainService.findById(categoryDTO.id());
     }
 
-    private ProductResponse toDTO(Product product) {
+    private ProductDTO toDTO(Product product) {
         Category category = product.getCategory();
-        return new ProductResponse(product.getId(), product.getName(), product.getPrice(), product.getQuantity(),
+        return new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getQuantity(),
                 new CategoryDTO(category.getId(), category.getName()));
     }
 

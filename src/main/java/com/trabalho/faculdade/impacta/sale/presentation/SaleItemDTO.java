@@ -1,13 +1,13 @@
 package com.trabalho.faculdade.impacta.sale.presentation;
 
-import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductResponse;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductDTO;
 
 import java.math.BigDecimal;
 
-public record SaleItemDTO(ProductResponse productResponse, int quantity) {
+public record SaleItemDTO(ProductDTO productDTO, int quantity) {
 
     public BigDecimal getTotalPrice() {
-        return productResponse.price().multiply(BigDecimal.valueOf(quantity));
+        return productDTO.price().multiply(BigDecimal.valueOf(quantity));
     }
 
 }

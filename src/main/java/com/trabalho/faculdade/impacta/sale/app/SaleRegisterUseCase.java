@@ -6,7 +6,7 @@ import com.trabalho.faculdade.impacta.sale.domain.SaleItem;
 import com.trabalho.faculdade.impacta.product.domain.ProductDomainService;
 import com.trabalho.faculdade.impacta.sale.domain.SaleItemService;
 import com.trabalho.faculdade.impacta.sale.domain.SaleService;
-import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductResponse;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductDTO;
 import com.trabalho.faculdade.impacta.sale.presentation.SaleItemDTO;
 import com.trabalho.faculdade.impacta.sale.presentation.SaleRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +37,11 @@ public class SaleRegisterUseCase {
     }
 
     private void registerSellItem(SaleItemDTO saleItemDTO, Sale sale) {
-        ProductResponse productResponse = saleItemDTO.productResponse();
-        Product product = productDomainService.findById(productResponse.id());
+        ProductDTO productDTO = saleItemDTO.productDTO();
+        Product product = productDomainService.findById(productDTO.id());
         sellProduct(product, saleItemDTO.quantity());
         saleItemService.save(
-                new SaleItem(saleItemDTO.quantity(), productResponse.price(), saleItemDTO.getTotalPrice(), sale, product)
+                new SaleItem(saleItemDTO.quantity(), productDTO.price(), saleItemDTO.getTotalPrice(), sale, product)
         );
     }
 

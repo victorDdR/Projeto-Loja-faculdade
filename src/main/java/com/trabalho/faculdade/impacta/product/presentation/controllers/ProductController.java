@@ -1,7 +1,7 @@
 package com.trabalho.faculdade.impacta.product.presentation.controllers;
 
 import com.trabalho.faculdade.impacta.product.app.ProductService;
-import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductResponse;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductDTO;
 import com.trabalho.faculdade.impacta.util.PageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -20,19 +20,19 @@ public class ProductController {
     }
 
     @GetMapping
-    public PageResponse<ProductResponse> findAll(Pageable pageable) {
+    public PageResponse<ProductDTO> findAll(Pageable pageable) {
         return productService.findAll(pageable);
     }
 
     @GetMapping( path = "/available")
-    public PageResponse<ProductResponse>findAllAvailable(Pageable pageable) {
+    public PageResponse<ProductDTO>findAllAvailable(Pageable pageable) {
         return productService.findAllAvailable(pageable);
     }
 
     @PostMapping(consumes = "application/json; charset=utf-8", path = "/new")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductResponse productResponse) {
-        productService.createProduct(productResponse);
+    public void createProduct(@RequestBody ProductDTO productDTO) {
+        productService.createProduct(productDTO);
     }
 
     @DeleteMapping(path = "/{productId}/delete")
