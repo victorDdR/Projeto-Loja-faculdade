@@ -6,7 +6,7 @@ import com.trabalho.faculdade.impacta.sale.domain.SaleItem;
 import com.trabalho.faculdade.impacta.product.domain.ProductDomainService;
 import com.trabalho.faculdade.impacta.sale.domain.SaleItemService;
 import com.trabalho.faculdade.impacta.sale.domain.SaleService;
-import com.trabalho.faculdade.impacta.product.presentation.ProductDTO;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductDTO;
 import com.trabalho.faculdade.impacta.sale.presentation.SaleItemDTO;
 import com.trabalho.faculdade.impacta.sale.presentation.SaleRequest;
 import org.springframework.beans.factory.annotation.Autowired;
