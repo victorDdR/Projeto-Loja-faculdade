@@ -1,6 +1,6 @@
 package com.trabalho.faculdade.impacta.sale.presentation;
 
-import com.trabalho.faculdade.impacta.product.presentation.ProductDTO;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductDTO;
 
 import java.math.BigDecimal;
 

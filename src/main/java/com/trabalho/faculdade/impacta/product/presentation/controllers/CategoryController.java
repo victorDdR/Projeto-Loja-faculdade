@@ -1,6 +1,7 @@
-package com.trabalho.faculdade.impacta.product.presentation;
+package com.trabalho.faculdade.impacta.product.presentation.controllers;
 
 import com.trabalho.faculdade.impacta.product.domain.CategoryDomainService;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.CategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

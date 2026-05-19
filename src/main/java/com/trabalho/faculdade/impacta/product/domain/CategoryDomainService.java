@@ -1,6 +1,6 @@
 package com.trabalho.faculdade.impacta.product.domain;
 
-import com.trabalho.faculdade.impacta.product.presentation.CategoryDTO;
+import com.trabalho.faculdade.impacta.product.presentation.dtos.CategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
