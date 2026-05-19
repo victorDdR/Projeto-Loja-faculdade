@@ -18,7 +18,7 @@ public class SaleController {
 
     @PostMapping(consumes = "application/json; charset=utf-8", path = "/register")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void sell(@RequestBody @Valid SaleRequest saleRequest) {
+    public void sell(@RequestBody SaleRequest saleRequest) {
         saleRegisterUseCase.register(saleRequest);
     }
 
