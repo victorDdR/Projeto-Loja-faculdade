@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SaleItemService {
+public class SaleItemServiceDomain {
 
     private final SaleItems saleItems;
 
     @Autowired
-    SaleItemService(SaleItems saleItems) {
+    SaleItemServiceDomain(SaleItems saleItems) {
         this.saleItems = saleItems;
     }
 

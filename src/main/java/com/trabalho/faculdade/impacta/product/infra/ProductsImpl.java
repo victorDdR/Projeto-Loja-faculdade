@@ -1,6 +1,5 @@
 package com.trabalho.faculdade.impacta.product.infra;
 
-import com.trabalho.faculdade.impacta.infra.repository.ProductRepository;
 import com.trabalho.faculdade.impacta.product.domain.Product;
 import com.trabalho.faculdade.impacta.product.domain.Products;
 import org.springframework.beans.factory.annotation.Autowired;
