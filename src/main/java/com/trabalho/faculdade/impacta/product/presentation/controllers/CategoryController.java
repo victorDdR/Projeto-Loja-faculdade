@@ -1,31 +1,28 @@
 package com.trabalho.faculdade.impacta.product.presentation.controllers;
 
-import com.trabalho.faculdade.impacta.product.domain.CategoryDomainService;
+import com.trabalho.faculdade.impacta.product.app.CategoryService;
 import com.trabalho.faculdade.impacta.product.presentation.dtos.CategoryDTO;
+import com.trabalho.faculdade.impacta.util.PageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/categories")
 public class CategoryController {
 
-    private final CategoryDomainService categoryDomainService;
+    private final CategoryService categoryService;
 
     @Autowired
-    CategoryController(CategoryDomainService categoryDomainService) {
-        this.categoryDomainService = categoryDomainService;
+    CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
-    @GetMapping(produces = "application/json; charset=utf-8")
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<CategoryDTO> findAll() {
-        return categoryDomainService.findAll();
+    @GetMapping
+    public PageResponse<CategoryDTO> findAll(Pageable pageable) {
+        return categoryService.findAllCategory(pageable);
     }
 
 }

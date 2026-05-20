@@ -1,10 +1,11 @@
 package com.trabalho.faculdade.impacta.product.domain;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface Categories {
 
-    List<Category> findAll();
+    Page<Category> findAll(Pageable pageable);
     Category findById(Long categoryId);
     Category save(Category category);
 }
