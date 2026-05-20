@@ -3,6 +3,8 @@ package com.trabalho.faculdade.impacta.product.infra;
 import com.trabalho.faculdade.impacta.product.domain.Category;
 import com.trabalho.faculdade.impacta.product.domain.Categories;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class CategoriesImpl implements Categories {
 
 
     @Override
-    public List<Category> findAll() {
-        return categoryRepository.findByDeletedFalse();
+    public Page<Category> findAll(Pageable pageable) {
+        return categoryRepository.findByDeletedFalse(pageable);
     }
 
     @Override
