@@ -1,5 +1,6 @@
 package com.trabalho.faculdade.impacta.product.presentation.dtos;
 
+import com.trabalho.faculdade.impacta.product.domain.Product;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,7 +11,14 @@ public record ProductDTO(Long id,
                          String productName,
                          @NotNull
                          BigDecimal price,
-                         int stock,
+                         @NotNull
+                         Integer stock,
                          @NotNull
                          CategoryDTO category) {
+
+    public ProductDTO(Product product) {
+        this(product.getId(), product.getName(), product.getPrice(), product.getQuantity(),
+                new CategoryDTO(product.getCategory()));
+    }
+
 }
