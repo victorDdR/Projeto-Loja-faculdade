@@ -42,4 +42,16 @@ public class SaleItem {
         this.product = product;
     }
 
+    public String getProductName() {
+        return product.getName();
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
 }
