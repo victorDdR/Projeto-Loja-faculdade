@@ -12,7 +12,7 @@ public class Sale {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    @Column(name = "item_id")
+    @Column(name = "sale_id")
     private Long id;
 
     @Column(nullable = false, name = "sale_date")
@@ -21,7 +21,7 @@ public class Sale {
     @Column(nullable = false, name = "total")
     private BigDecimal total;
 
-    @OneToMany(mappedBy = "sale", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sale", fetch = FetchType.EAGER)
     private List<SaleItem> items;
 
     @Deprecated
@@ -34,6 +34,18 @@ public class Sale {
 
     public Long getId() {
         return id;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public LocalDateTime getSaleDate() {
+        return saleDate;
+    }
+
+    public List<SaleItem> getItems() {
+        return List.copyOf(items);
     }
 
 }

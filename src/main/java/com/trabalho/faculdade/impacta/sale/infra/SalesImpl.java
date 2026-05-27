@@ -3,6 +3,8 @@ package com.trabalho.faculdade.impacta.sale.infra;
 import com.trabalho.faculdade.impacta.sale.domain.Sale;
 import com.trabalho.faculdade.impacta.sale.domain.Sales;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,8 +25,8 @@ class SalesImpl implements Sales {
     }
 
     @Override
-    public List<Sale> findAll() {
-        return saleRepository.findAll();
+    public Page<Sale> findAll(Pageable pageable) {
+        return saleRepository.findAll(pageable);
     }
 
     @Override

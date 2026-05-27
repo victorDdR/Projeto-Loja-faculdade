@@ -8,7 +8,11 @@ import com.trabalho.faculdade.impacta.sale.domain.SaleItemServiceDomain;
 import com.trabalho.faculdade.impacta.sale.domain.SaleServiceDomain;
 import com.trabalho.faculdade.impacta.sale.presentation.SaleItemRequest;
 import com.trabalho.faculdade.impacta.sale.presentation.SaleRequest;
+import com.trabalho.faculdade.impacta.sale.presentation.SaleResponse;
+import com.trabalho.faculdade.impacta.util.PageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,17 +20,23 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class SaleRegisterUseCase {
+public class SaleService {
 
     private final SaleServiceDomain saleServiceDomain;
     private final SaleItemServiceDomain saleItemServiceDomain;
     private final ProductDomainService productDomainService;
 
     @Autowired
-    SaleRegisterUseCase(SaleServiceDomain saleServiceDomain, SaleItemServiceDomain saleItemServiceDomain, ProductDomainService productDomainService) {
+    SaleService(SaleServiceDomain saleServiceDomain, SaleItemServiceDomain saleItemServiceDomain,
+                ProductDomainService productDomainService) {
         this.saleServiceDomain = saleServiceDomain;
         this.saleItemServiceDomain = saleItemServiceDomain;
         this.productDomainService = productDomainService;
+    }
+
+    public PageResponse<SaleResponse> findAll(Pageable pageable) {
+        Page<SaleResponse> page = saleServiceDomain.findAll(pageable).map(SaleResponse::new);
+        return new PageResponse<>(page);
     }
 
     public void register(SaleRequest saleRequest) {
