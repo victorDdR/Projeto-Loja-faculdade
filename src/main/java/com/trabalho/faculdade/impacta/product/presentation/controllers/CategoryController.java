@@ -22,7 +22,7 @@ public class CategoryController {
 
     @GetMapping
     public PageResponse<CategoryDTO> findAll(Pageable pageable) {
-        return categoryService.findAllCategory(pageable);
+        return categoryService.findAll(pageable);
     }
 
 }

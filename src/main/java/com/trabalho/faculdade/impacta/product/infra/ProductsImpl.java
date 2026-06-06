@@ -2,12 +2,11 @@ package com.trabalho.faculdade.impacta.product.infra;
 
 import com.trabalho.faculdade.impacta.product.domain.Product;
 import com.trabalho.faculdade.impacta.product.domain.Products;
+import com.trabalho.faculdade.impacta.product.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 class ProductsImpl implements Products {
@@ -31,7 +30,9 @@ class ProductsImpl implements Products {
 
     @Override
     public Product findById(Long productId) {
-        return productRepository.findById(productId).orElse(null);
+        return productRepository.findById(productId).orElseThrow(
+                () -> new ProductNotFoundException("Product with id: " + productId + " not found!")
+        );
     }
 
     @Override

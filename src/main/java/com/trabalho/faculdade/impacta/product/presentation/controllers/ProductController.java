@@ -32,13 +32,13 @@ public class ProductController {
 
     @PostMapping(consumes = "application/json; charset=utf-8", path = "/new")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void createProduct(@RequestBody @Valid ProductDTO productDTO) {
-        productService.createProduct(productDTO);
+    public void create(@RequestBody @Valid ProductDTO productDTO) {
+        productService.create(productDTO);
     }
 
     @DeleteMapping(path = "/{productId}/delete")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable Long productId) {
+    public void delete(@PathVariable Long productId) {
         productService.deleteById(productId);
     }
 

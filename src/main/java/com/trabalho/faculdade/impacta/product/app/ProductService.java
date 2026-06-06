@@ -34,7 +34,7 @@ public class ProductService {
         return new PageResponse<>(page);
     }
 
-    public void createProduct(ProductDTO productDTO) {
+    public void create(ProductDTO productDTO) {
         Category category = getCategory(productDTO.category());
         productDomainService.save(new Product(productDTO.productName(), productDTO.price(), productDTO.stock(), category));
     }
