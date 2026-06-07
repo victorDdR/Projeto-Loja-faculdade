@@ -25,16 +25,16 @@ public class ProductService {
     }
 
     public PageResponse<ProductDTO> findAll(Pageable pageable) {
-        Page<ProductDTO> page = productDomainService.findAll(pageable).map(this::toDTO);
+        Page<ProductDTO> page = productDomainService.findAll(pageable).map(ProductDTO::new);
         return new PageResponse<>(page);
     }
 
     public PageResponse<ProductDTO> findAllAvailable(Pageable pageable) {
-        Page<ProductDTO> page = productDomainService.findAllAvailable(pageable).map(this::toDTO);
+        Page<ProductDTO> page = productDomainService.findAllAvailable(pageable).map(ProductDTO::new);
         return new PageResponse<>(page);
     }
 
-    public void createProduct(ProductDTO productDTO) {
+    public void create(ProductDTO productDTO) {
         Category category = getCategory(productDTO.category());
         productDomainService.save(new Product(productDTO.productName(), productDTO.price(), productDTO.stock(), category));
     }
@@ -49,12 +49,6 @@ public class ProductService {
         }
 
         return categoryDomainService.findById(categoryDTO.id());
-    }
-
-    private ProductDTO toDTO(Product product) {
-        Category category = product.getCategory();
-        return new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getQuantity(),
-                new CategoryDTO(category.getId(), category.getName()));
     }
 
 }

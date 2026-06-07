@@ -3,6 +3,7 @@ package com.trabalho.faculdade.impacta.product.presentation.controllers;
 import com.trabalho.faculdade.impacta.product.app.ProductService;
 import com.trabalho.faculdade.impacta.product.presentation.dtos.ProductDTO;
 import com.trabalho.faculdade.impacta.util.PageResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -31,13 +32,13 @@ public class ProductController {
 
     @PostMapping(consumes = "application/json; charset=utf-8", path = "/new")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductDTO productDTO) {
-        productService.createProduct(productDTO);
+    public void create(@RequestBody @Valid ProductDTO productDTO) {
+        productService.create(productDTO);
     }
 
     @DeleteMapping(path = "/{productId}/delete")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable Long productId) {
+    public void delete(@PathVariable Long productId) {
         productService.deleteById(productId);
     }
 
